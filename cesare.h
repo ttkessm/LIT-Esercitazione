@@ -1,3 +1,10 @@
+/// \file Cesare.h
+///    \brief Declaration of the class Cesare
+///
+///                     Derivate of class ciphertext
+///
+
+
 #ifndef CESARE_H
 #define CESARE_H
 
@@ -34,14 +41,22 @@ public:
     /// @brief Set the shift value
     /// @param shiftVal The new shift value for the Caesar cipher
     void SetShift(int shiftVal);
+    
+    /// @brief Get the shift value
+    int GetShift();
 
-    /// @brief Override the base class's Cipher function
+    /// @brief Removes special characters and makes uppercase characters lowercase
     /// @param text The input text
+    /// @return The text ready to be ciphered
+    char *CleanText(char *text) override;
+    
+    /// @brief Override the base class's Cipher function
+    /// @param text The input clean text
     /// @return The ciphered text
     char *Cipher(char *text) override;
 
     /// @brief Override the base class's Decipher function
-    /// @param text The input text
+    /// @param text The ciphered text
     /// @return The deciphered text
     char *Decipher(char *text) override;
 };
