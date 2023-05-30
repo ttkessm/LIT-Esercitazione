@@ -4,7 +4,6 @@
 ///               Derivate of class ciphertext
 ///
 
-
 #include <iostream>
 #include <cstring>
 #include <string.h>
@@ -69,7 +68,7 @@ int Cesare::GetShift()
     int shiftInput;
     cout << "Enter shift value: ";
     cin >> shiftInput;
-    
+
     return shiftInput;
 }
 
@@ -78,38 +77,31 @@ int Cesare::GetShift()
 /// @return The text ready to be ciphered
 char *Cesare::CleanText(char *text)
 {
-    int i=0;                             ///@param i counter variable
-    int k=0;                             ///@param k indesired characters variable
+    int i = 0; ///@param i counter variable
+    int k = 0; ///@param k indesired characters variable
     unsigned int ascii;
     char *cleanedText;
-    
-    cleanedText = new char[strlen(text) + 1];               //create an array with the same lenght as the text array
-    strcpy_s(cleanedText, strlen(text) + 1, text);          //copy the text on that array
-    
-    while(cleanedText[i] != '\0' && (i < strlen(cleanedText) + 1 - k))           //funciton that detects ASCII simbols which are not alfabetic charcaters,
-    {                                                                            //and makes uppercase characters shift by 32 on the ASCII table, making them lowercase
+
+    cleanedText = new char[strlen(text) + 1];      // create an array with the same lenght as the text array
+    strcpy_s(cleanedText, strlen(text) + 1, text); // copy the text on that array
+
+    while (cleanedText[i] != '\0' && (i < strlen(cleanedText) + 1 - k)) // funciton that detects ASCII simbols which are not alfabetic charcaters,
+    {                                                                   // and makes uppercase characters shift by 32 on the ASCII table, making them lowercase
         ascii = (unsigned int)cleanedText[i];
-        
+
         if (ascii >= 97 && ascii <= 122)
-        {
-            cleanedText[i] = (char)ascii
-        }
-        
-        else if (ch >= 65 && ch <= 90)
-        {
-            cleanedText[i] = (char)(ascii+32)
-        }
-        
+            cleanedText[i] = (char)ascii;
+
+        else if (ascii >= 65 && ascii <= 90)
+            cleanedText[i] = (char)(ascii + 32);
+
         else
-        {
-            k++
-        }
-        
+            k++;
+
         i++;
     }
-    
+
     return cleanedText;
-   
 }
 
 /// @brief Override the base class's Cipher function
@@ -117,16 +109,23 @@ char *Cesare::CleanText(char *text)
 /// @return The ciphered text
 char *Cesare::Cipher(char *text)
 {
-    int length = strlen(text);
-    char *cipherText = new char[length + 1];
+    char *cleanedText = CleanText(text);
+    int i = 0;
+    unsigned int shift;
+    unsigned int ascii;
 
-    cipherText = new char[strlen(CleanText(text)) + 1];
-    strcpy_s(cipherText, strlen(CleanText(text)) + 1, text);
-    
+    char *cipherText = new char[strlen(cleanedText) + 1];
+    strcpy_s(cipherText, strlen(cleanedText) + 1, cleanedText);
+
     shift = GetShift();
-    
 
-    //Da completare
+    while (cipherText[i] != '\0' && (i < strlen(cipherText) + 1))
+    {
+        ascii = (unsigned int)cipherText[i];
+        cipherText[i] = (char)(97 + (ascii + shift - 97) % 26);
+
+        i++;
+    }
 
     return cipherText;
 }
@@ -136,12 +135,23 @@ char *Cesare::Cipher(char *text)
 /// @return The deciphered text
 char *Cesare::Decipher(char *text)
 {
+    int i = 0;
+    unsigned int shift;
+    unsigned int ascii;
+    char *decipherText;
+
     int length = strlen(text);
-    char *decipherText = new char[length + 1];
+    decipherText = new char[length + 1];
 
     shift = GetShift();
 
-    //Da completare
+    while (text[i] != '\0' && (i < strlen(text) + 1))
+    {
+        ascii = (unsigned int)decipherText[i];
+        decipherText[i] = (char)(97 + (ascii - 97 - shift + 26) % 26);
+
+        i++;
+    }
 
     return decipherText;
 }
