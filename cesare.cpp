@@ -19,8 +19,7 @@ using namespace std;
 
 
 
-// Default constructor
-
+/// @brief default constructor
 Cesare::Cesare() : Ciphertext()
 
 {
@@ -34,8 +33,9 @@ Cesare::Cesare() : Ciphertext()
 
 
 
-// Constructor with shift value
-
+/// @brief Constructor with shift value
+/// @param text The input text
+/// @param shiftVal The shift value for the Caesar cipher
 Cesare::Cesare(char* text, int shiftVal) : Ciphertext(text)
 
 {
@@ -49,8 +49,8 @@ Cesare::Cesare(char* text, int shiftVal) : Ciphertext(text)
 
 
 
-// Copy constructor
-
+/// @brief Copy constructor
+/// @param o Reference to the object to be copied
 Cesare::Cesare(const Cesare& o) : Ciphertext(o)
 
 {
@@ -64,8 +64,7 @@ Cesare::Cesare(const Cesare& o) : Ciphertext(o)
 
 
 
-// Destructor
-
+///@brief Destructor
 Cesare::~Cesare()
 
 {
@@ -77,7 +76,10 @@ Cesare::~Cesare()
 
 
 
-// Overloaded assignment operator
+
+/// @brief Overloaded assignment operator
+/// @param o Reference to the object on the right of the operator
+/// @return Reference to the object on the left of the operator
 
 Cesare& Cesare::operator=(const Cesare& o)
 
@@ -102,8 +104,8 @@ Cesare& Cesare::operator=(const Cesare& o)
 
 
 
-// Set the shift value
-
+/// @brief Set the shift value
+/// @param shiftVal The new shift value for the Caesar cipher
 void Cesare::SetShift(int shiftVal)
 
 {
@@ -115,8 +117,9 @@ void Cesare::SetShift(int shiftVal)
 
 
 
-// Override the base class's Cipher function
-
+/// @brief Override the base class's Cipher function
+/// @param text The input clean text
+/// @return The ciphered text
 char* Cesare::Cipher(char* text)
 
 {
@@ -205,8 +208,9 @@ char* Cesare::Cipher(char* text)
 
 
 
-// Override the base class's Decipher function
-
+/// @brief Override the base class's Decipher function
+/// @param text The ciphered text
+/// @return The deciphered text
 char* Cesare::Decipher(char* text)
 
 {
