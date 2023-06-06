@@ -1,8 +1,8 @@
-/*! \file ciphertext.h
-	\brief Declaration of the base class Ciphertext
-
-	Details.
-*/
+/// \file ciphertext.h
+///	\brief Declaration of the base class Ciphertext
+///
+///	Details.
+///
 
 #ifndef CIPHERTEXT_H
 #define CIPHERTEXT_H
