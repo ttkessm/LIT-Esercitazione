@@ -23,7 +23,7 @@ public:
     /// @brief Constructor with shift value
     /// @param text The input text
     /// @param shiftVal The shift value for the Caesar cipher
-    Cesare(char *text, int shiftVal);
+    Cesare(char *text,int shiftVal);
 
     /// @brief Copy constructor
     /// @param o Reference to the object to be copied
@@ -41,8 +41,6 @@ public:
     /// @param shiftVal The new shift value for the Caesar cipher
     void SetShift(int shiftVal);
 
-    /// @brief Get the shift value
-    int GetShift();
 
     /// @brief Removes special characters and makes uppercase characters lowercase
     /// @param text The input text
