@@ -1,4 +1,3 @@
-
 /// \file main.cpp
 ///     \brief Main function of the program
 ///     \return 0 if the program executed successfully
@@ -14,14 +13,11 @@ using namespace std;
 
 int main()
 {
-    char inputText[1000]; /// Input text entered by the user
-    int shiftVal;         /// \shiftVal Shift value for the Caesar cipher
+    char inputText[1000]; /// Input text shift by the user
+    int shiftVal = 0;         /// \shiftVal Shift value for the Caesar cipher
 
     cout << "Enter the text to encrypt: ";
     cin.getline(inputText, 1000); /// Read the input text from the user
-
-    cout << "Enter the shift value: ";
-    cin >> shiftVal; /// Read the shift value
 
     Cesare cipher(inputText, shiftVal); /// Create a Cesare object using the input text and shift value
 
